@@ -1,3 +1,54 @@
+<?php
+session_start();
+
+include 'BDD.php';
+
+class viewProperty
+{
+    private $propertyId;
+    private $bdd;
+
+    public function __construct($bdd,$propertyId)
+    {
+        $this->bdd = $bdd;
+        $this->propertyId = $propertyId;
+    }
+
+    public function getProperty()
+    {
+        $sql = "SELECT * FROM properties WHERE id = :id";
+        $params = ['id' => $this->propertyId];
+        $stmt = $this->bdd->bdQuery($sql, $params);
+        return $stmt->fetch();
+    }
+
+    public function getAgent($idAgent)
+    {
+        $sql = "SELECT * FROM users WHERE id = :id";
+        $params = ['id' => $idAgent];
+        $stmt = $this->bdd->bdQuery($sql, $params);
+        return $stmt->fetch();
+    }
+
+    public function getProperties($idAgent)
+    {
+        $sql = "SELECT * FROM properties WHERE users_id = :id";
+        $params = ['id' => $idAgent];
+        $stmt = $this->bdd->bdQuery($sql, $params);
+        return $stmt->fetchAll();
+    }
+}
+
+if (isset($_POST["view-property"])) {
+    $propertyId = $_POST["view-property"];
+    $bdd = new BDD();
+    $viewProperty = new viewProperty($bdd,$propertyId);
+    echo $propertyId;
+} else {
+    header('Location: index.php');
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -266,371 +317,41 @@
 			<!-- Additional required wrapper -->
 			<div class="swiper-wrapper">
 				<!-- Slides -->
-				<div class="swiper-slide">
-					<div class="slide-bg swiper-lazy" data-background="images/slides/1.jpg" data-sub-html="<strong>this is a caption 1</strong><br/>Second line of the caption"></div>
-					<!-- Preloader image -->
-					<div class="swiper-lazy-preloader swiper-lazy-preloader-white"></div>
-					<div class="container">
-                        <div class="row">
-                            <div class="col-sm-12 col-md-9 col-lg-8 slide-desc-col animated fadeInUp gallery-slide-desc-1">
-								<div class="gallery-slide-cont">
-									<div class="gallery-slide-cont-inner">	
-										<div class="gallery-slide-title pull-right">
-											<h5 class="subtitle-margin">apartments for sale</h5>
-											<h3>Fort Collins, Colorado 80523, USA<span class="special-color">.</span></h3>
-										</div>
-										<div class="gallery-slide-estate pull-right hidden-xs">
-											<i class="fa fa-home"></i>
-										</div>
-										<div class="clearfix"></div>
-									</div>
-									<div class="clearfix"></div>
-									<div class="gallery-slide-desc-price pull-right">
-										$320 000
-									</div>	
-									<div class="clearfix"></div>
-								</div>	
-							</div>			
-						</div>
-					</div>
-					
-				</div>
-				<div class="swiper-slide">
-					<div class="slide-bg swiper-lazy" data-background="images/slides/2.jpg"></div>
-					<!-- Preloader image -->
-					<div class="swiper-lazy-preloader swiper-lazy-preloader-white"></div>
-					<div class="container">
-                        <div class="row">
-                            <div class="col-sm-12 col-md-9 col-lg-8 slide-desc-col animated gallery-slide-desc-2">
-								<div class="gallery-slide-cont">
-									<div class="gallery-slide-cont-inner">	
-										<div class="gallery-slide-title pull-right">
-											<h5 class="subtitle-margin">apartments for sale</h5>
-											<h3>Fort Collins, Colorado 80523, USA<span class="special-color">.</span></h3>
-										</div>
-										<div class="gallery-slide-estate pull-right hidden-xs">
-											<i class="fa fa-home"></i>
-										</div>
-										<div class="clearfix"></div>
-									</div>
-									<div class="clearfix"></div>
-									<div class="gallery-slide-desc-price pull-right">
-										$320 000
-									</div>	
-									<div class="clearfix"></div>
-								</div>	
-							</div>	
-						</div>
-					</div>
-				</div>
-				<div class="swiper-slide">
-					<div class="slide-bg swiper-lazy" data-background="images/slides/3.jpg"></div>
-					<!-- Preloader image -->
-					<div class="swiper-lazy-preloader swiper-lazy-preloader-white"></div>
-					<div class="container">
-                        <div class="row">
-                            <div class="col-sm-12 col-md-9 col-lg-8 slide-desc-col animated gallery-slide-desc-3">
-								<div class="gallery-slide-cont">
-									<div class="gallery-slide-cont-inner">	
-										<div class="gallery-slide-title pull-right">
-											<h5 class="subtitle-margin">apartments for sale</h5>
-											<h3>Fort Collins, Colorado 80523, USA<span class="special-color">.</span></h3>
-										</div>
-										<div class="gallery-slide-estate pull-right hidden-xs">
-											<i class="fa fa-home"></i>
-										</div>
-										<div class="clearfix"></div>
-									</div>
-									<div class="clearfix"></div>
-									<div class="gallery-slide-desc-price pull-right">
-										$320 000
-									</div>	
-									<div class="clearfix"></div>
-								</div>	
-							</div>
-						</div>
-					</div>
-				</div>
-				<div class="swiper-slide">
-					<div class="slide-bg swiper-lazy" data-background="images/slides/4.jpg"></div>
-					<!-- Preloader image -->
-					<div class="swiper-lazy-preloader swiper-lazy-preloader-white"></div>
-					<div class="container">
-                        <div class="row">
-                            <div class="col-sm-12 col-md-9 col-lg-8 slide-desc-col animated gallery-slide-desc-4">
-								<div class="gallery-slide-cont">
-									<div class="gallery-slide-cont-inner">	
-										<div class="gallery-slide-title pull-right">
-											<h5 class="subtitle-margin">apartments for sale</h5>
-											<h3>Fort Collins, Colorado 80523, USA<span class="special-color">.</span></h3>
-										</div>
-										<div class="gallery-slide-estate pull-right hidden-xs">
-											<i class="fa fa-home"></i>
-										</div>
-										<div class="clearfix"></div>
-									</div>
-									<div class="clearfix"></div>
-									<div class="gallery-slide-desc-price pull-right">
-										$320 000
-									</div>	
-									<div class="clearfix"></div>
-								</div>	
-							</div>
-						</div>
-					</div>
-				</div>
-				<div class="swiper-slide">
-					<div class="slide-bg swiper-lazy" data-background="images/slides/5.jpg"></div>
-					<!-- Preloader image -->
-					<div class="swiper-lazy-preloader swiper-lazy-preloader-white"></div>
-					<div class="container">
-                        <div class="row">
-                            <div class="col-sm-12 col-md-9 col-lg-8 slide-desc-col animated gallery-slide-desc-5">
-								<div class="gallery-slide-cont">
-									<div class="gallery-slide-cont-inner">	
-										<div class="gallery-slide-title pull-right">
-											<h5 class="subtitle-margin">apartments for sale</h5>
-											<h3>Fort Collins, Colorado 80523, USA<span class="special-color">.</span></h3>
-										</div>
-										<div class="gallery-slide-estate pull-right hidden-xs">
-											<i class="fa fa-home"></i>
-										</div>
-										<div class="clearfix"></div>
-									</div>
-									<div class="clearfix"></div>
-									<div class="gallery-slide-desc-price pull-right">
-										$320 000
-									</div>	
-									<div class="clearfix"></div>
-								</div>	
-							</div>
-						</div>
-					</div>
-				</div>
-				<div class="swiper-slide">
-					<div class="slide-bg swiper-lazy" data-background="images/slides/6.jpg"></div>
-					<!-- Preloader image -->
-					<div class="swiper-lazy-preloader swiper-lazy-preloader-white"></div>
-					<div class="container">
-                        <div class="row">
-                            <div class="col-sm-12 col-md-9 col-lg-8 slide-desc-col animated gallery-slide-desc-6">
-								<div class="gallery-slide-cont">
-									<div class="gallery-slide-cont-inner">	
-										<div class="gallery-slide-title pull-right">
-											<h5 class="subtitle-margin">apartments for sale</h5>
-											<h3>Fort Collins, Colorado 80523, USA<span class="special-color">.</span></h3>
-										</div>
-										<div class="gallery-slide-estate pull-right hidden-xs">
-											<i class="fa fa-home"></i>
-										</div>
-										<div class="clearfix"></div>
-									</div>
-									<div class="clearfix"></div>
-									<div class="gallery-slide-desc-price pull-right">
-										$320 000
-									</div>	
-									<div class="clearfix"></div>
-								</div>	
-							</div>
-						</div>
-					</div>
-				</div>
-				<div class="swiper-slide">
-					<div class="slide-bg swiper-lazy" data-background="images/slides/7.jpg"></div>
-					<!-- Preloader image -->
-					<div class="swiper-lazy-preloader swiper-lazy-preloader-white"></div>
-					<div class="container">
-                        <div class="row">
-                            <div class="col-sm-12 col-md-9 col-lg-8 slide-desc-col animated gallery-slide-desc-7">
-								<div class="gallery-slide-cont">
-									<div class="gallery-slide-cont-inner">	
-										<div class="gallery-slide-title pull-right">
-											<h5 class="subtitle-margin">apartments for sale</h5>
-											<h3>Fort Collins, Colorado 80523, USA<span class="special-color">.</span></h3>
-										</div>
-										<div class="gallery-slide-estate pull-right hidden-xs">
-											<i class="fa fa-home"></i>
-										</div>
-										<div class="clearfix"></div>
-									</div>
-									<div class="clearfix"></div>
-									<div class="gallery-slide-desc-price pull-right">
-										$320 000
-									</div>	
-									<div class="clearfix"></div>
-								</div>	
-							</div>
-						</div>
-					</div>
-				</div>
-				<div class="swiper-slide">
-					<div class="slide-bg swiper-lazy" data-background="images/slides/8.jpg"></div>
-					<!-- Preloader image -->
-					<div class="swiper-lazy-preloader swiper-lazy-preloader-white"></div>
-					<div class="container">
-                        <div class="row">
-                            <div class="col-sm-12 col-md-9 col-lg-8 slide-desc-col animated gallery-slide-desc-8">
-								<div class="gallery-slide-cont">
-									<div class="gallery-slide-cont-inner">	
-										<div class="gallery-slide-title pull-right">
-											<h5 class="subtitle-margin">apartments for sale</h5>
-											<h3>Fort Collins, Colorado 80523, USA<span class="special-color">.</span></h3>
-										</div>
-										<div class="gallery-slide-estate pull-right hidden-xs">
-											<i class="fa fa-home"></i>
-										</div>
-										<div class="clearfix"></div>
-									</div>
-									<div class="clearfix"></div>
-									<div class="gallery-slide-desc-price pull-right">
-										$320 000
-									</div>	
-									<div class="clearfix"></div>
-								</div>	
-							</div>
-						</div>
-					</div>
-				</div>
-				<div class="swiper-slide">
-					<div class="slide-bg swiper-lazy" data-background="images/slides/9.jpg"></div>
-					<!-- Preloader image -->
-					<div class="swiper-lazy-preloader swiper-lazy-preloader-white"></div>
-					<div class="container">
-                        <div class="row">
-                            <div class="col-sm-12 col-md-9 col-lg-8 slide-desc-col animated gallery-slide-desc-9">
-								<div class="gallery-slide-cont">
-									<div class="gallery-slide-cont-inner">	
-										<div class="gallery-slide-title pull-right">
-											<h5 class="subtitle-margin">apartments for sale</h5>
-											<h3>Fort Collins, Colorado 80523, USA<span class="special-color">.</span></h3>
-										</div>
-										<div class="gallery-slide-estate pull-right hidden-xs">
-											<i class="fa fa-home"></i>
-										</div>
-										<div class="clearfix"></div>
-									</div>
-									<div class="clearfix"></div>
-									<div class="gallery-slide-desc-price pull-right">
-										$320 000
-									</div>	
-									<div class="clearfix"></div>
-								</div>	
-							</div>
-						</div>
-					</div>
-				</div>
-				<div class="swiper-slide">
-					<div class="slide-bg swiper-lazy" data-background="images/slides/10.jpg"></div>
-					<!-- Preloader image -->
-					<div class="swiper-lazy-preloader swiper-lazy-preloader-white"></div>
-					<div class="container">
-                        <div class="row">
-                            <div class="col-sm-12 col-md-9 col-lg-8 slide-desc-col animated gallery-slide-desc-10">
-								<div class="gallery-slide-cont">
-									<div class="gallery-slide-cont-inner">	
-										<div class="gallery-slide-title pull-right">
-											<h5 class="subtitle-margin">apartments for sale</h5>
-											<h3>Fort Collins, Colorado 80523, USA<span class="special-color">.</span></h3>
-										</div>
-										<div class="gallery-slide-estate pull-right hidden-xs">
-											<i class="fa fa-home"></i>
-										</div>
-										<div class="clearfix"></div>
-									</div>
-									<div class="clearfix"></div>
-									<div class="gallery-slide-desc-price pull-right">
-										$320 000
-									</div>	
-									<div class="clearfix"></div>
-								</div>	
-							</div>
-						</div>
-					</div>
-				</div>
-				<div class="swiper-slide">
-					<div class="slide-bg swiper-lazy" data-background="images/slides/11.jpg"></div>
-					<!-- Preloader image -->
-					<div class="swiper-lazy-preloader swiper-lazy-preloader-white"></div>
-					<div class="container">
-                        <div class="row">
-                            <div class="col-sm-12 col-md-9 col-lg-8 slide-desc-col animated gallery-slide-desc-11">
-								<div class="gallery-slide-cont">
-									<div class="gallery-slide-cont-inner">	
-										<div class="gallery-slide-title pull-right">
-											<h5 class="subtitle-margin">apartments for sale</h5>
-											<h3>Fort Collins, Colorado 80523, USA<span class="special-color">.</span></h3>
-										</div>
-										<div class="gallery-slide-estate pull-right hidden-xs">
-											<i class="fa fa-home"></i>
-										</div>
-										<div class="clearfix"></div>
-									</div>
-									<div class="clearfix"></div>
-									<div class="gallery-slide-desc-price pull-right">
-										$320 000
-									</div>	
-									<div class="clearfix"></div>
-								</div>	
-							</div>
-						</div>
-					</div>
-				</div>
-				<div class="swiper-slide">
-					<div class="slide-bg swiper-lazy" data-background="images/slides/12.jpg"></div>
-					<!-- Preloader image -->
-					<div class="swiper-lazy-preloader swiper-lazy-preloader-white"></div>
-					<div class="container">
-                        <div class="row">
-                            <div class="col-sm-12 col-md-9 col-lg-8 slide-desc-col animated gallery-slide-desc-12">
-								<div class="gallery-slide-cont">
-									<div class="gallery-slide-cont-inner">	
-										<div class="gallery-slide-title pull-right">
-											<h5 class="subtitle-margin">apartments for sale</h5>
-											<h3>Fort Collins, Colorado 80523, USA<span class="special-color">.</span></h3>
-										</div>
-										<div class="gallery-slide-estate pull-right hidden-xs">
-											<i class="fa fa-home"></i>
-										</div>
-										<div class="clearfix"></div>
-									</div>
-									<div class="clearfix"></div>
-									<div class="gallery-slide-desc-price pull-right">
-										$320 000
-									</div>	
-									<div class="clearfix"></div>
-								</div>	
-							</div>
-						</div>
-					</div>
-				</div>
-				<div class="swiper-slide">
-					<div class="slide-bg swiper-lazy" data-background="images/slides/13.jpg"></div>
-					<!-- Preloader image -->
-					<div class="swiper-lazy-preloader swiper-lazy-preloader-white"></div>
-					<div class="container">
-                        <div class="row">
-                            <div class="col-sm-12 col-md-9 col-lg-8 slide-desc-col animated gallery-slide-desc-13">
-								<div class="gallery-slide-cont">
-									<div class="gallery-slide-cont-inner">	
-										<div class="gallery-slide-title pull-right">
-											<h5 class="subtitle-margin">apartments for sale</h5>
-											<h3>Fort Collins, Colorado 80523, USA<span class="special-color">.</span></h3>
-										</div>
-										<div class="gallery-slide-estate pull-right hidden-xs">
-											<i class="fa fa-home"></i>
-										</div>
-										<div class="clearfix"></div>
-									</div>
-									<div class="clearfix"></div>
-									<div class="gallery-slide-desc-price pull-right">
-										$320 000
-									</div>	
-									<div class="clearfix"></div>
-								</div>	
-							</div>
-						</div>
-					</div>
-				</div>
+                <?php
+
+                for ($i = 1; $i <= 4; $i++)
+                echo '
+                        <div class="swiper-slide">
+                            <div class="slide-bg swiper-lazy" data-background="images/slides/1.jpg" data-sub-html="<strong>this is a caption 1</strong><br/>Second line of the caption"></div>
+                            <!-- Preloader image -->
+                            <div class="swiper-lazy-preloader swiper-lazy-preloader-white"></div>
+                            <div class="container">
+                                <div class="row">
+                                    <div class="col-sm-12 col-md-9 col-lg-8 slide-desc-col animated fadeInUp gallery-slide-desc-1">
+                                        <div class="gallery-slide-cont">
+                                            <div class="gallery-slide-cont-inner">    
+                                                <div class="gallery-slide-title pull-right">
+                                                    <h5 class="subtitle-margin">apartments for sale</h5>
+                                                    <h3>' . $viewProperty->getProperty()['title'] . '<span class="special-color">.</span></h3>
+                                                </div>
+                                                <div class="gallery-slide-estate pull-right hidden-xs">
+                                                    <i class="fa fa-home"></i>
+                                                </div>
+                                                <div class="clearfix"></div>
+                                            </div>
+                                            <div class="clearfix"></div>
+                                            <div class="gallery-slide-desc-price pull-right">
+                                                $' . $viewProperty->getProperty()['price'] . '
+                                            </div>    
+                                            <div class="clearfix"></div>
+                                        </div>    
+                                    </div>            
+                                </div>
+                            </div>
+                        </div>
+                    ';
+
+                ?>
 			</div>
 			
 			<div class="slide-buttons slide-buttons-center">
@@ -642,67 +363,33 @@
 		</div>
 		
     </section>
-	<section class="thumbs-slider section-both-shadow">
-		<div class="container">
-			<div class="row">
-				<div class="col-xs-1">
-					<a href="#" class="thumb-box thumb-prev pull-left"><div class="navigation-triangle"></div><div class="navigation-box-icon"><i class="jfont">&#xe800;</i></div></a>
-				</div>
-				<div class="col-xs-10">
-					<!-- Slider main container -->
-					<div id="swiper-thumbs" class="swiper-container">
-						<!-- Additional required wrapper -->
-						<div class="swiper-wrapper">
-							<!-- Slides -->
-							<div class="swiper-slide">
-								<img class="slide-thumb" src="images/slides/m1.jpg" alt="">
-							</div>
-							<div class="swiper-slide">
-								<img class="slide-thumb" src="images/slides/m2.jpg" alt="">
-							</div>
-							<div class="swiper-slide">
-								<img class="slide-thumb" src="images/slides/m3.jpg" alt="">
-							</div>
-							<div class="swiper-slide">
-								<img class="slide-thumb" src="images/slides/m4.jpg" alt="">
-							</div>
-							<div class="swiper-slide">
-								<img class="slide-thumb" src="images/slides/m5.jpg" alt="">
-							</div>
-							<div class="swiper-slide">
-								<img class="slide-thumb" src="images/slides/m6.jpg" alt="">
-							</div>
-							<div class="swiper-slide">
-								<img class="slide-thumb" src="images/slides/m7.jpg" alt="">
-							</div>
-							<div class="swiper-slide">
-								<img class="slide-thumb" src="images/slides/m8.jpg" alt="">
-							</div>
-							<div class="swiper-slide">
-								<img class="slide-thumb" src="images/slides/m9.jpg" alt="">
-							</div>
-							<div class="swiper-slide">
-								<img class="slide-thumb" src="images/slides/m10.jpg" alt="">
-							</div>
-							<div class="swiper-slide">
-								<img class="slide-thumb" src="images/slides/m11.jpg" alt="">
-							</div>
-							<div class="swiper-slide">
-								<img class="slide-thumb" src="images/slides/m12.jpg" alt="">
-							</div>
-							<div class="swiper-slide">
-								<img class="slide-thumb" src="images/slides/m13.jpg" alt="">
-							</div>
-						</div>
-					</div>
-				</div>
-				<div class="col-xs-1">
-					<a href="#" class="thumb-box thumb-next pull-right"><div class="navigation-triangle"></div><div class="navigation-box-icon"><i class="jfont">&#xe802;</i></div></a>
-				</div>
-			</div>
-		</div>
-	</section>
-	<section class="section-light no-bottom-padding">
+    <section class="thumbs-slider section-both-shadow">
+        <div class="container">
+            <div class="row">
+                <div class="col-xs-1">
+                    <a href="#" class="thumb-box thumb-prev pull-left"><div class="navigation-triangle"></div><div class="navigation-box-icon"><i class="jfont">&#xe800;</i></div></a>
+                </div>
+                <div class="col-xs-10">
+                    <!-- Slider main container -->
+                    <div id="swiper-thumbs" class="swiper-container">
+                        <!-- Additional required wrapper -->
+                        <div class="swiper-wrapper">
+                            <!-- Slides -->
+                            <?php for ($i = 0; $i < 4; $i++): ?>
+                                <div class="swiper-slide">
+                                    <img class="slide-thumb" src="images/slides/m3.jpg" alt="">
+                                </div>
+                            <?php endfor; ?>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xs-1">
+                    <a href="#" class="thumb-box thumb-next pull-right"><div class="navigation-triangle"></div><div class="navigation-box-icon"><i class="jfont">&#xe802;</i></div></a>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="section-light no-bottom-padding">
 		<div class="container">
 			<div class="row">
 				<div class="col-xs-12 col-md-9">
@@ -713,28 +400,28 @@
 							</div>
 							<div class="details-title pull-left">
 								<h5 class="subtitle-margin">apartment for sale</h5>
-								<h3>Fort Collins, Colorado 80523, USA<span class="special-color">.</span></h3>
+								<h3><?php echo $viewProperty->getProperty()['title']; ?><span class="special-color">.</span></h3>
 							</div>
 							<div class="clearfix"></div>	
 							<div class="title-separator-primary"></div>
-							<p class="details-desc">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea.</p>
+							<p class="details-desc"><?php echo $viewProperty->getProperty()['desc1']; ?></p>
 						</div>
 						<div class="col-xs-12 col-sm-5 col-md-4">
-							<div class="details-parameters-price">$320 000</div>
+							<div class="details-parameters-price">$<?php echo $viewProperty->getProperty()['price']; ?></div>
 							<div class="details-parameters">
 								<div class="details-parameters-cont">
 									<div class="details-parameters-name">area</div>
-									<div class="details-parameters-val">54m<sup>2</sup></div>
+									<div class="details-parameters-val"><?php echo $viewProperty->getProperty()['superficie']; ?>m<sup>2</sup></div>
 									<div class="clearfix"></div>	
 								</div>
 								<div class="details-parameters-cont">
 									<div class="details-parameters-name">bedrooms</div>
-									<div class="details-parameters-val">3</div>
+									<div class="details-parameters-val"><?php echo $viewProperty->getProperty()['totroom']; ?></div>
 									<div class="clearfix"></div>	
 								</div>
 								<div class="details-parameters-cont">
 									<div class="details-parameters-name">bathrooms</div>
-									<div class="details-parameters-val">1</div>
+									<div class="details-parameters-val"><?php echo $viewProperty->getProperty()['nroom']; ?></div>
 									<div class="clearfix"></div>	
 								</div>
 								<div class="details-parameters-cont">
@@ -823,8 +510,8 @@
 					</div>
 					<div class="row margin-top-60">
 						<div class="col-xs-8 col-xs-offset-2 col-sm-3 col-sm-offset-0">
-							<h5 class="subtitle-margin">manager</h5>
-							<h3 class="title-negative-margin">Mark Smith<span class="special-color">.</span></h3>
+							<h5 class="subtitle-margin">Agent</h5>
+							<h3 class="title-negative-margin"><?php echo $viewProperty->getAgent($viewProperty->getProperty()['users_id'])['firstname']; ?> <?php echo $viewProperty->getAgent($viewProperty->getProperty()['users_id'])['lastname']; ?><span class="special-color">.</span></h3>
 							<a href="agent-right-sidebar.html" class="agent-photo">
 								<img src="images/agent3.jpg" alt="" class="img-responsive" />
 							</a>
@@ -835,13 +522,13 @@
 									<span class="agent-icon-circle">
 										<i class="fa fa-phone"></i>
 									</span>
-									<span class="agent-bar-text">123-456-789</span>
+									<span class="agent-bar-text"><?php echo $viewProperty->getAgent($viewProperty->getProperty()['users_id'])['phone']; ?></span>
 								</div>
 								<div class="pull-left">
 									<span class="agent-icon-circle">
 										<i class="fa fa-envelope fa-sm"></i>
 									</span>
-									<span class="agent-bar-text">apartment@domain.tld</span>
+									<span class="agent-bar-text"><?php echo $viewProperty->getAgent($viewProperty->getProperty()['users_id'])['email']; ?></span>
 								</div>
 								<div class="pull-right">
 									<div class="pull-right">
@@ -901,57 +588,65 @@
 					
 					<div class="short-offers-container">
 						<div class="owl-carousel" id="short-offers-owl">
-								<div class="grid-offer-col">
-									<div class="grid-offer">
-										<div class="grid-offer-front">
-										
-											<div class="grid-offer-photo">
-												<img src="images/grid-offer1.jpg" alt="" />
-												<div class="type-container">
-													<div class="estate-type">apartment</div>
-													<div class="transaction-type">sale</div>
-												</div>
-											</div>
-											<div class="grid-offer-text">
-												<i class="fa fa-map-marker grid-offer-localization"></i>
-												<div class="grid-offer-h4"><h4 class="grid-offer-title">34 Fort Collins, Colorado 80523, USA</h4></div>
-												<div class="clearfix"></div>
-												<p>Lorem ipsum dolor sit amet, conse ctetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et [...]</p>
-												<div class="clearfix"></div>
-											</div>
-											<div class="price-grid-cont">
-												<div class="grid-price-label pull-left">Price:</div>
-												<div class="grid-price pull-right">
-													$ 320 000
-												</div>
-												<div class="clearfix"></div>
-											</div>
-											<div class="grid-offer-params">
-												<div class="grid-area">
-													<img src="images/area-icon.png" alt="" />54m<sup>2</sup>
-												</div>
-												<div class="grid-rooms">
-													<img src="images/rooms-icon.png" alt="" />3
-												</div>
-												<div class="grid-baths">
-													<img src="images/bathrooms-icon.png" alt="" />1
-												</div>							
-											</div>	
-											
-										</div>
-										<div class="grid-offer-back">
-											<div id="grid-map1" class="grid-offer-map"></div>
-											<div class="button">	
-												<a href="estate-details-right-sidebar.html" class="button-primary">
-													<span>read more</span>
-													<div class="button-triangle"></div>
-													<div class="button-triangle2"></div>
-													<div class="button-icon"><i class="fa fa-search"></i></div>
-												</a>
-											</div>
-										</div>
-									</div>
-								</div>
+
+                            <?php
+                            for ($i = 0; $i < 3; $i++) {
+                            echo '
+                                <div class="grid-offer-col">
+                                    <div class="grid-offer">
+                                        <div class="grid-offer-front">
+                                            <div class="grid-offer-photo">
+                                                <img src="images/grid-offer1.jpg" alt="" />
+                                                <div class="type-container">
+                                                    <div class="estate-type">apartment</div>
+                                                    <div class="transaction-type">sale</div>
+                                                </div>
+                                            </div>
+                                            <div class="grid-offer-text">
+                                                <i class="fa fa-map-marker grid-offer-localization"></i>
+                                                <div class="grid-offer-h4"><h4 class="grid-offer-title">' . $viewProperty->getProperties($viewProperty->getAgent($viewProperty->getProperty()['users_id'])['id'])[$i]['title'] . '</h4></div>
+                                                <div class="clearfix"></div>
+                                                <p>' . $viewProperty->getProperties($viewProperty->getAgent($viewProperty->getProperty()['users_id'])['id'])[$i]['desc1'] . '</p>
+                                                <div class="clearfix"></div>
+                                            </div>
+                                            <div class="price-grid-cont">
+                                                <div class="grid-price-label pull-left">Price:</div>
+                                                <div class="grid-price pull-right">
+                                                    $ ' . $viewProperty->getProperties($viewProperty->getAgent($viewProperty->getProperty()['users_id'])['id'])[$i]['price'] . '
+                                                </div>
+                                                <div class="clearfix"></div>
+                                            </div>
+                                            <div class="grid-offer-params">
+                                                <div class="grid-area">
+                                                    <img src="images/area-icon.png" alt="" />' . $viewProperty->getProperties($viewProperty->getAgent($viewProperty->getProperty()['users_id'])['id'])[$i]['superficie'] . 'm<sup>2</sup>
+                                                </div>
+                                                <div class="grid-rooms">
+                                                    <img src="images/rooms-icon.png" alt="" />' . $viewProperty->getProperties($viewProperty->getAgent($viewProperty->getProperty()['users_id'])['id'])[$i]['totroom'] . '
+                                                </div>
+                                                <div class="grid-baths">
+                                                    <img src="images/bathrooms-icon.png" alt="" />' . $viewProperty->getProperties($viewProperty->getAgent($viewProperty->getProperty()['users_id'])['id'])[$i]['nroom'] . '
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="grid-offer-back">
+                                            <div id="grid-map1" class="grid-offer-map"></div>
+                                            <div class="button">
+                                                <form action="estate-details-right-sidebar.php" method="post">
+                                                    <input type="hidden" name="view-property" value="' . $viewProperty->getProperties($viewProperty->getAgent($viewProperty->getProperty()['users_id'])['id'])[$i]['id'] . '">
+                                                    <button type="submit" class="button-primary">
+                                                        <span>read more</span>
+                                                        <div class="button-triangle"></div>
+                                                        <div class="button-triangle2"></div>
+                                                        <div class="button-icon"><i class="fa fa-search"></i></div>
+                                                    </button>
+                                                </form>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            ';}
+                            ?>
+
 								<div class="grid-offer-col">
 									<div class="grid-offer">
 										<div class="grid-offer-front">
