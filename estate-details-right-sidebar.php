@@ -43,7 +43,6 @@ if (isset($_POST["view-property"])) {
     $propertyId = $_POST["view-property"];
     $bdd = new BDD();
     $viewProperty = new viewProperty($bdd,$propertyId);
-    echo $propertyId;
 } else {
     header('Location: index.php');
 }
