@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : mariadb
--- Généré le : jeu. 15 fév. 2024 à 09:08
+-- Généré le : jeu. 15 fév. 2024 à 13:02
 -- Version du serveur : 11.2.2-MariaDB-1:11.2.2+maria~ubu2204
 -- Version de PHP : 8.2.8
 
@@ -38,8 +38,8 @@ CREATE TABLE `category` (
 --
 
 INSERT INTO `category` (`id`, `name`, `slug`) VALUES
-(1, 'omnis', 'earum-animi-vitae-debitis-commodi-praesentium'),
-(2, 'dolorem', 'adipisci-dolores-rerum-est-itaque'),
+(1, 'For sale', 'earum-animi-vitae-debitis-commodi-praesentium'),
+(2, 'For rent', 'adipisci-dolores-rerum-est-itaque'),
 (3, 'et', 'amet-nihil-odio-et-eius'),
 (4, 'qui', 'enim-sit-et-sed-debitis-sed'),
 (5, 'ratione', 'quisquam-rerum-velit-est-dolorem-saepe-dolorem-sed');
@@ -193,23 +193,23 @@ CREATE TABLE `properties` (
   `totroom` varchar(255) NOT NULL,
   `nroom` varchar(255) NOT NULL,
   `desc1` mediumtext NOT NULL,
-  `desc2` mediumtext NOT NULL,
+  `desc2` mediumtext DEFAULT NULL,
   `superficie` varchar(255) NOT NULL,
   `address_zip` varchar(255) NOT NULL,
   `address_city` varchar(255) NOT NULL,
   `address_street` varchar(255) NOT NULL,
-  `address_complement` varchar(255) NOT NULL,
+  `address_complement` varchar(255) DEFAULT NULL,
   `address_geo` varchar(255) NOT NULL,
-  `currency` varchar(3) NOT NULL,
+  `currency` varchar(3) DEFAULT NULL,
   `price` varchar(255) NOT NULL,
-  `fees` float NOT NULL,
+  `fees` float DEFAULT NULL,
   `comm` float DEFAULT NULL,
   `vendor_givename` varchar(255) NOT NULL,
   `vendor_familyname` varchar(255) NOT NULL,
-  `vendor_phone` varchar(255) NOT NULL,
-  `vendor_mobile` varchar(255) NOT NULL,
+  `vendor_phone` varchar(255) DEFAULT NULL,
+  `vendor_mobile` varchar(255) DEFAULT NULL,
   `vendor_email` varchar(255) NOT NULL,
-  `vendor_webpage` varchar(255) NOT NULL,
+  `vendor_webpage` varchar(255) DEFAULT NULL,
   `datecreate` date DEFAULT NULL,
   `dateupdate` date DEFAULT NULL,
   `datedelete` date DEFAULT NULL,
@@ -227,13 +227,13 @@ CREATE TABLE `properties` (
 --
 
 INSERT INTO `properties` (`id`, `title`, `totroom`, `nroom`, `desc1`, `desc2`, `superficie`, `address_zip`, `address_city`, `address_street`, `address_complement`, `address_geo`, `currency`, `price`, `fees`, `comm`, `vendor_givename`, `vendor_familyname`, `vendor_phone`, `vendor_mobile`, `vendor_email`, `vendor_webpage`, `datecreate`, `dateupdate`, `datedelete`, `gazDiag_id`, `DTA_id`, `DPE_id`, `users_id`, `category_id`, `transaction`, `type`) VALUES
-(142267, 'UNE SUPER MAISON ECLATAX', '8', '6', 'JE VAIS ME PENDRE', 'Quas quis quidem impedit laudantium nesciunt vitae qui.', '101', '90680', 'Marsilly', '14 Rue des Goélands', '67, avenue Claude Bodin', '-1.1425929,46.2288675', 'BZD', '542803', 3319, 4, 'Émilie', 'Buisson', '+33 6 24 94 68 68', '05 69 76 72 98', 'thibaut40@besnard.com', 'http://guillou.fr/ex-vel-quae-aut-molestias-et.html', '2023-02-01', '2024-02-14', '2019-06-22', 2, 2, 2, 2, 2, 'For rent', 'Apartment'),
+(142267, 'POURQUOI CA MARCHE PAS ', '8', '6', 'JE VAIS ME PENDRE', 'Quas quis quidem impedit laudantium nesciunt vitae qui.', '101', '90680', 'Marsilly', '14 Rue des Goélands', '67, avenue Claude Bodin', '-1.1425929,46.2288675', 'BZD', '542803', 3319, 4, 'Émilie', 'Buisson', '+33 6 24 94 68 68', '05 69 76 72 98', 'thibaut40@besnard.com', 'http://guillou.fr/ex-vel-quae-aut-molestias-et.html', '2023-02-01', '2024-02-15', '2019-06-22', 2, 2, 2, 2, 2, 'For rent', 'Apartment'),
 (142268, 'Et qui a quia et nobis deserunt vel.', '5', '10', 'Voluptatem iste repellat non iusto.', 'Cupiditate et dolor nisi fugiat necessitatibus.', '415', '31648', 'Ramos', '429, avenue Daniel Lebon', '63, place Turpin', '78.704785,165.986119', 'USD', '512327', 3614, 7, 'Antoinette', 'Mercier', '+33 1 72 78 73 13', '+33 9 30 35 90 38', 'celina.briand@leconte.net', 'http://bodin.net/', '2022-01-03', '2022-11-10', '2021-12-16', 2, 2, 2, 2, 2, '', ''),
 (142269, 'Maiores est omnis labore ad iusto omnis.', '2', '7', 'A aliquid quo aut velit asperiores.', 'Dolorem quis impedit expedita sapiente enim eum atque.', '238', '43436', 'VidalBourg', '33, place Berger', '99, place de Giraud', '-4.399558,74.605847', 'SDG', '641923', 4004, 1, 'Zacharie', 'Leclerc', '+33 1 00 03 57 81', '02 43 68 41 65', 'guibert.claudine@letellier.fr', 'https://www.prevost.net/molestias-qui-porro-atque-atque-dignissimos-itaque-odit', '2018-01-05', '2023-10-31', '2014-07-10', 2, 2, 2, 2, 2, '', ''),
 (142270, 'Eius in dolorem quae.', '1', '9', 'Est tempore adipisci cum sit eum omnis.', 'Nam eum numquam consequuntur fugiat.', '66', '98098', 'Martins', '68, rue de Launay', '461, chemin de Perez', '0.376737,-50.373748', 'SEK', '750684', 3803, 1, 'Denis', 'Bodin', '+33 (0)1 34 93 01 35', '+33 (0)1 39 26 02 85', 'rbouvier@faivre.org', 'https://guillon.net/quaerat-officia-reiciendis-nam-ducimus-ad-ut.html', '2016-01-28', '2020-10-02', '2019-12-31', 2, 2, 2, 2, 2, '', ''),
-(142271, 'Apganan', '7', '3', 'Minima vitae ut praesentium.', 'Qui pariatur amet eos et.', '653', '77563', 'avenue Blanchet', '52', 'rue Bernadette Duhamel', '-88.398154,151.228929', 'MZN', '647355', 6719, 3, 'Margot', 'Bertrand', '+33 9 59 72 39 41', '0992460502', 'genevieve50@grondin.net', 'http://boulanger.net/molestiae-est-reiciendis-fugiat-esse-et', '2014-03-13', '2024-02-14', '2017-02-16', 2, 2, 2, 2, 2, 'For sale', 'Apartment'),
-(142272, 'APPART A CHIER (vraiment pas ouf)', '1', '1', 'ACHETTE PAS CEST POURRAVE', 'Enim voluptatem animi tenetur ab nesciunt.', '1', '17138', 'Saint-Xandre', '13 Rue des Gerboises', '983, avenue Eugène Bourdon', '-1.0996135,46.2084274', 'DOP', '90837469', 5914, 7, 'Laure', 'Lecoq', '0360583705', '+33 2 20 62 29 09', 'edouard23@bonnin.fr', 'http://www.gilles.fr/', '2024-01-26', '2024-02-14', '2019-02-12', 2, 2, 2, 2, 2, 'For sale', 'Apartment'),
-(142273, 'en vrai pas ouff', '6', '8', 'Occaecati voluptatum iure provident voluptas numquam ut debitis.', 'Rem et quia nobis aperiam totam aspernatur.', '35', '81025', 'impasse de Camus', '33', '7, rue de Blanchet', '84.376916,-112.415312', 'MUR', '92837', 4035, 7, 'Marine', 'Bouvet', '+33 6 59 46 82 66', '06 21 43 99 76', 'olivier.marthe@roux.com', 'http://godard.fr/deserunt-distinctio-consequuntur-ipsam-quia-et', '2022-08-29', '2024-02-14', '2022-12-02', 2, 2, 2, 2, 2, 'For sale', 'Apartment'),
+(142271, 'YUIDFGOUIYSGFOPIYUGFOYUIWGF', '7', '3', 'Minima vitae ut praesentium.', 'Qui pariatur amet eos et.', '653', '77563', 'avenue Blanchet', '52', 'rue Bernadette Duhamel', '-88.398154,151.228929', 'MZN', '647355', 6719, 3, 'Margot', 'Bertrand', '+33 9 59 72 39 41', '0992460502', 'genevieve50@grondin.net', 'http://boulanger.net/molestiae-est-reiciendis-fugiat-esse-et', '2014-03-13', '2024-02-15', '2017-02-16', 2, 2, 2, 2, 2, 'For sale', 'Apartment'),
+(142272, 'MAISON', '1', '1', 'SUPER MAISON', 'Enim voluptatem animi tenetur ab nesciunt.', '1', '17138', 'Saint-Xandre', '13 Rue des Gerboises', '983, avenue Eugène Bourdon', '-1.0996135,46.2084274', 'DOP', '90837469', 5914, 7, 'Laure', 'Lecoq', '0360583705', '+33 2 20 62 29 09', 'edouard23@bonnin.fr', 'http://www.gilles.fr/', '2024-01-26', '2024-02-15', '2019-02-12', 2, 2, 2, 2, 2, 'For sale', 'Apartment'),
+(142273, 'AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA', '6', '8', 'Ca va mal finir', 'Rem et quia nobis aperiam totam aspernatur.', '35', '81025', 'impasse de Camus', '33', '7, rue de Blanchet', '84.376916,-112.415312', 'MUR', '92837', 4035, 7, 'Marine', 'Bouvet', '+33 6 59 46 82 66', '06 21 43 99 76', 'olivier.marthe@roux.com', 'http://godard.fr/deserunt-distinctio-consequuntur-ipsam-quia-et', '2022-08-29', '2024-02-15', '2022-12-02', 2, 2, 2, 2, 2, 'For sale', 'Apartment'),
 (142274, 'Ullam velit consequatur expedita dicta nulla magni.', '7', '8', 'Ut tenetur et quia corporis quam mollitia.', 'Exercitationem repellendus facilis alias omnis rerum rerum.', '35', '20832', 'Dumasdan', '76, place Daniel Albert', 'chemin de Chauveau', '81.240302,161.555407', 'PLN', '376311', 7268, 1, 'Frédéric', 'Potier', '01 61 30 74 37', '+33 (0)9 26 31 85 58', 'adrien.dasilva@gillet.com', 'https://www.diaz.org/repudiandae-corrupti-eveniet-sed-recusandae-ipsum', '2018-12-25', '2014-11-08', '2017-06-06', 2, 2, 2, 16, 2, 'For rent', 'House'),
 (142275, 'Omnis mollitia voluptate quo impedit dolor velit fugiat.', '2', '2', 'Et laborum aut tempore iure iusto dolorum.', 'Dolores in fugit laborum qui.', '862', '48888', 'Joly', '76, chemin Henry', '8, rue de Raymond', '-15.549341,33.727098', 'EUR', '755166', 3213, 9, 'Pénélope', 'Vallet', '0898429666', '0793776408', 'pierre99@poirier.net', 'http://coste.net/quis-consequatur-dolores-enim-iure', '2019-11-08', '2022-12-30', '2022-05-08', 2, 2, 2, 16, 2, 'For sale', 'Appartment'),
 (142276, 'Nihil cumque nihil tenetur.', '6', '4', 'Eos in commodi necessitatibus reiciendis neque.', 'Quam dicta dolor ducimus qui illo minus.', '137', '66995', 'Camus', '189, chemin de Georges', '9, avenue de Begue', '-15.602291,-80.181439', 'KES', '214129', 6072, 2, 'Daniel', 'Barthelemy', '0147394134', '0377814256', 'thibault.mahe@lemonnier.fr', 'http://masson.fr/', '2018-05-19', '2023-01-18', '2023-07-12', 2, 2, 2, 16, 2, 'For rent', 'Commercial'),
@@ -263,7 +263,9 @@ INSERT INTO `properties` (`id`, `title`, `totroom`, `nroom`, `desc1`, `desc2`, `
 (142300, 'Quidem aut omnis eum id odit deserunt quia aut.', '4', '9', 'Nemo voluptate et eum explicabo in et quibusdam labore.', 'Saepe rerum nam repellendus est nemo.', '923', '17010', 'Clerc-les-Bains', '75, boulevard de Boucher', '77, impasse de Dupuy', '-84.750707,-134.267319', 'AMD', '119780', 5799, 4, 'Hugues', 'Bouvier', '09 21 52 72 96', '0278721632', 'xavier58@antoine.fr', 'https://blanc.fr/quod-qui-veniam-velit-et-magnam.html', '2024-01-30', '2016-01-28', '2023-10-07', 2, 2, 2, 22, 2, 'For rent', 'Land'),
 (142301, 'Rerum quia maxime sit ex perspiciatis.', '2', '2', 'Maiores reiciendis sint nobis hic eaque illo.', 'Accusamus laboriosam minus impedit est quia nesciunt qui.', '657', '41694', 'MaillardVille', '37, rue Lesage', 'place Michel Ferrand', '53.777484,129.49577', 'BTN', '428778', 7087, 1, 'Matthieu', 'Guichard', '+33 2 95 92 37 53', '+33 6 83 48 21 13', 'torres.adelaide@guillaume.com', 'http://www.evrard.com/sint-minus-veritatis-ratione-non-accusamus-veritatis-tenetur.html', '2022-08-05', '2020-12-22', '2023-01-12', 2, 2, 2, 22, 2, 'For sale', 'House'),
 (142302, 'Libero dolores molestiae quae distinctio dolorem quam molestias vero.', '9', '1', 'Autem sit impedit omnis at corporis non atque.', 'Assumenda quo repellat est eveniet et distinctio expedita.', '334', '69289', 'Pelletier-la-Forêt', '8, chemin de Hardy', '72, chemin de Begue', '-54.28216,116.278998', 'BOB', '341894', 5481, 9, 'William', 'Goncalves', '0897172861', '0825924581', 'tpinto@leroy.fr', 'http://potier.com/sint-hic-reprehenderit-et-sit-asperiores-ab', '2023-02-18', '2020-04-01', '2023-09-15', 2, 2, 2, 22, 2, 'For rent', 'Appartment'),
-(142303, 'Dignissimos enim vitae ducimus ipsam facilis.', '8', '4', 'Aut atque sint a corporis inventore.', 'Saepe nesciunt quam nisi eum qui.', '741', '79243', 'Ruizdan', '552, impasse Goncalves', '76, rue Aurélie Rodriguez', '77.652123,-13.646745', 'BBD', '604817', 5764, 3, 'Tristan', 'Barbier', '08 24 43 24 23', '+33 6 73 48 98 98', 'roy.martine@gautier.org', 'http://www.chretien.com/', '2022-04-11', '2015-01-12', '2022-09-02', 2, 2, 2, 22, 2, 'For sale', 'House');
+(142303, 'Dignissimos enim vitae ducimus ipsam facilis.', '8', '4', 'Aut atque sint a corporis inventore.', 'Saepe nesciunt quam nisi eum qui.', '741', '79243', 'Ruizdan', '552, impasse Goncalves', '76, rue Aurélie Rodriguez', '77.652123,-13.646745', 'BBD', '604817', 5764, 3, 'Tristan', 'Barbier', '08 24 43 24 23', '+33 6 73 48 98 98', 'roy.martine@gautier.org', 'http://www.chretien.com/', '2022-04-11', '2015-01-12', '2022-09-02', 2, 2, 2, 22, 2, 'For sale', 'House'),
+(142304, 'testing', '12', '3', 'TEST', NULL, '123', '23425', '', 'France', NULL, '2.213749,46.227638', NULL, '243242', NULL, NULL, 'test', 'test', NULL, NULL, 'test@test', NULL, NULL, NULL, NULL, 2, 2, 2, 2, 2, 'For sale', 'Apartment'),
+(142305, 'test', '234', '234', '2342342423', NULL, '234234', '23424', 'Brooklyn', 'Franklin Avenue', NULL, '-73.95577109999999,40.6817436', NULL, '32432', NULL, NULL, 'test', 'test', NULL, NULL, 'test@test', NULL, NULL, NULL, NULL, 2, 2, 2, 2, 2, 'For rent', 'Apartment');
 
 -- --------------------------------------------------------
 
@@ -428,7 +430,7 @@ ALTER TABLE `pictures`
 -- AUTO_INCREMENT pour la table `properties`
 --
 ALTER TABLE `properties`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=142304;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=142311;
 
 --
 -- AUTO_INCREMENT pour la table `users`
