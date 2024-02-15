@@ -196,9 +196,9 @@ if (isset($_POST["delete-submit"])) {
 									</ul>
 								</li>
 								<li class="dropdown-submenu">
-									<a tabindex="-1" href="estate-details-right-sidebar.html">Single Property</a>
+									<a tabindex="-1" href="estate-details-right-sidebar.php">Single Property</a>
 									<ul class="dropdown-menu">
-										<li><a href="estate-details-right-sidebar.html">Right Sidebar</a></li>
+										<li><a href="estate-details-right-sidebar.php">Right Sidebar</a></li>
 										<li><a href="estate-details-left-sidebar.html">Left Sidebar</a></li>
 										<li><a href="estate-details-no-sidebar.html">No Sidebar</a></li>
 									</ul>
@@ -385,9 +385,21 @@ if (isset($_POST["delete-submit"])) {
                                                 <div class="list-offer-right">
                                                     <div class="list-offer-text">
                                                         <i class="fa fa-map-marker list-offer-localization"></i>
-                                                        <div class="list-offer-h4"><a href="estate-details-right-sidebar.html"><h4 class="list-offer-title"> ' . $propertiesList[$i]['title'] . ', ' . $propertiesList[$i]['address_city'] . ' ' . $propertiesList[$i]['address_zip'] . ', USA</h4></a></div>
+                                                        <div class="list-offer-h4">
+                                                            <form method="POST" action="estate-details-right-sidebar.php">
+                                                                <input type="hidden" name="view-property" value="' . $propertiesList[$i]['id'] . '">
+                                                                <button type="submit" style="background: none; border: none; padding: 0; text-align: left;">
+                                                                    <h4 class="list-offer-title">' . $propertiesList[$i]['title'] . ', ' . $propertiesList[$i]['address_city'] . ' ' . $propertiesList[$i]['address_zip'] . ', USA</h4>
+                                                                </button>
+                                                            </form>
+                                                        </div>                                                        
                                                         <div class="clearfix"></div>
-                                                        <a href="estate-details-right-sidebar.html">' . $propertiesList[$i]['desc1'] . '</a>
+                                                        <form method="POST" action="estate-details-right-sidebar.php">
+                                                            <input type="hidden" name="view-property" value="' . $propertiesList[$i]['id'] . '">
+                                                            <button type="submit" style="background: none; border: none; padding: 0; text-align: left;">
+                                                                ' . $propertiesList[$i]['desc1'] . '
+                                                            </button>
+                                                        </form>
                                                         <div class="clearfix"></div>
                                                     </div>
                                                     <div class="profile-list-footer">

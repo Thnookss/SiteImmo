@@ -147,9 +147,9 @@ session_start();
 									</ul>
 								</li>
 								<li class="dropdown-submenu">
-									<a tabindex="-1" href="estate-details-right-sidebar.html">Single Property</a>
+									<a tabindex="-1" href="estate-details-right-sidebar.php">Single Property</a>
 									<ul class="dropdown-menu">
-										<li><a href="estate-details-right-sidebar.html">Right Sidebar</a></li>
+										<li><a href="estate-details-right-sidebar.php">Right Sidebar</a></li>
 										<li><a href="estate-details-left-sidebar.html">Left Sidebar</a></li>
 										<li><a href="estate-details-no-sidebar.html">No Sidebar</a></li>
 									</ul>
@@ -311,7 +311,7 @@ session_start();
 								</div>
 								<div class="slide-buttons slide-buttons-right">
 									<a href="#" class="navigation-box navigation-box-next slide-next"><div class="navigation-triangle"></div><div class="navigation-box-icon"><i class="jfont">&#xe802;</i></div></a>
-									<a href="estate-details-right-sidebar.html" class="navigation-box navigation-box-more slide-more"><div class="navigation-triangle"></div><div class="navigation-box-icon"><i class="jfont fa-lg">&#xe813;</i></div></a>
+									<a href="estate-details-right-sidebar.php" class="navigation-box navigation-box-more slide-more"><div class="navigation-triangle"></div><div class="navigation-box-icon"><i class="jfont fa-lg">&#xe813;</i></div></a>
 									<a href="#" class="navigation-box navigation-box-prev slide-prev"><div class="navigation-triangle"></div><div class="navigation-box-icon"><i class="jfont">&#xe800;</i></div></a>
 								</div>
 							</div>
@@ -357,7 +357,7 @@ session_start();
 								</div>
 								<div class="slide-buttons slide-buttons-left">
 									<a href="#" class="navigation-box navigation-box-next slide-next"><div class="navigation-triangle"></div><div class="navigation-box-icon"><i class="jfont">&#xe802;</i></div></a>
-									<a href="estate-details-right-sidebar.html" class="navigation-box navigation-box-more slide-more"><div class="navigation-triangle"></div><div class="navigation-box-icon"><i class="jfont fa-lg">&#xe813;</i></div></a>
+									<a href="estate-details-right-sidebar.php" class="navigation-box navigation-box-more slide-more"><div class="navigation-triangle"></div><div class="navigation-box-icon"><i class="jfont fa-lg">&#xe813;</i></div></a>
 									<a href="#" class="navigation-box navigation-box-prev slide-prev"><div class="navigation-triangle"></div><div class="navigation-box-icon"><i class="jfont">&#xe800;</i></div></a>
 								</div>
 							</div>
@@ -409,7 +409,7 @@ session_start();
 								</div>
 								<div class="slide-buttons slide-buttons-center">
 									<a href="#" class="navigation-box navigation-box-next slide-next"><div class="navigation-triangle"></div><div class="navigation-box-icon"><i class="jfont">&#xe802;</i></div></a>
-									<a href="estate-details-right-sidebar.html" class="navigation-box navigation-box-more slide-more"><div class="navigation-triangle"></div><div class="navigation-box-icon"><i class="jfont fa-lg">&#xe813;</i></div></a>
+									<a href="estate-details-right-sidebar.php" class="navigation-box navigation-box-more slide-more"><div class="navigation-triangle"></div><div class="navigation-box-icon"><i class="jfont fa-lg">&#xe813;</i></div></a>
 									<a href="#" class="navigation-box navigation-box-prev slide-prev"><div class="navigation-triangle"></div><div class="navigation-box-icon"><i class="jfont">&#xe800;</i></div></a>
 								</div>
 							
@@ -866,7 +866,7 @@ session_start();
 					<div class="featured-offer-back">
 						<div id="featured-map1" class="featured-offer-map"></div>
 						<div class="button">	
-							<a href="estate-details-right-sidebar.html" class="button-primary">
+							<a href="estate-details-right-sidebar.php" class="button-primary">
 								<span>read more</span>
 								<div class="button-triangle"></div>
 								<div class="button-triangle2"></div>
@@ -907,7 +907,7 @@ session_start();
 					<div class="featured-offer-back">
 						<div id="featured-map2" class="featured-offer-map"></div>
 							<div class="button">	
-							<a href="estate-details-right-sidebar.html" class="button-primary">
+							<a href="estate-details-right-sidebar.php" class="button-primary">
 								<span>read more</span>
 								<div class="button-triangle"></div>
 								<div class="button-triangle2"></div>
@@ -948,7 +948,7 @@ session_start();
 					<div class="featured-offer-back">
 						<div id="featured-map3" class="featured-offer-map"></div>
 							<div class="button">	
-							<a href="estate-details-right-sidebar.html" class="button-primary">
+							<a href="estate-details-right-sidebar.php" class="button-primary">
 								<span>read more</span>
 								<div class="button-triangle"></div>
 								<div class="button-triangle2"></div>
@@ -989,7 +989,7 @@ session_start();
 					<div class="featured-offer-back">
 						<div id="featured-map4" class="featured-offer-map"></div>
 							<div class="button">	
-							<a href="estate-details-right-sidebar.html" class="button-primary">
+							<a href="estate-details-right-sidebar.php" class="button-primary">
 								<span>read more</span>
 								<div class="button-triangle"></div>
 								<div class="button-triangle2"></div>
@@ -1030,7 +1030,7 @@ session_start();
 					<div class="featured-offer-back">
 						<div id="featured-map5" class="featured-offer-map"></div>
 							<div class="button">	
-							<a href="estate-details-right-sidebar.html" class="button-primary">
+							<a href="estate-details-right-sidebar.php" class="button-primary">
 								<span>read more</span>
 								<div class="button-triangle"></div>
 								<div class="button-triangle2"></div>
@@ -1071,7 +1071,7 @@ session_start();
 					<div class="featured-offer-back">
 						<div id="featured-map6" class="featured-offer-map"></div>
 							<div class="button">	
-							<a href="estate-details-right-sidebar.html" class="button-primary">
+							<a href="estate-details-right-sidebar.php" class="button-primary">
 								<span>read more</span>
 								<div class="button-triangle"></div>
 								<div class="button-triangle2"></div>
@@ -1112,7 +1112,7 @@ session_start();
 					<div class="featured-offer-back">
 						<div id="featured-map7" class="featured-offer-map"></div>
 							<div class="button">	
-							<a href="estate-details-right-sidebar.html" class="button-primary">
+							<a href="estate-details-right-sidebar.php" class="button-primary">
 								<span>read more</span>
 								<div class="button-triangle"></div>
 								<div class="button-triangle2"></div>
@@ -1593,7 +1593,7 @@ session_start();
 						<div class="grid-offer-back">
 							<div id="grid-map1" class="grid-offer-map"></div>
 							<div class="button">	
-								<a href="estate-details-right-sidebar.html" class="button-primary">
+								<a href="estate-details-right-sidebar.php" class="button-primary">
 									<span>read more</span>
 									<div class="button-triangle"></div>
 									<div class="button-triangle2"></div>
@@ -1642,7 +1642,7 @@ session_start();
 						<div class="grid-offer-back">
 							<div id="grid-map2" class="grid-offer-map"></div>
 							<div class="button">	
-								<a href="estate-details-right-sidebar.html" class="button-primary">
+								<a href="estate-details-right-sidebar.php" class="button-primary">
 									<span>read more</span>
 									<div class="button-triangle"></div>
 									<div class="button-triangle2"></div>
@@ -1691,7 +1691,7 @@ session_start();
 						<div class="grid-offer-back">
 							<div id="grid-map3" class="grid-offer-map"></div>
 							<div class="button">	
-								<a href="estate-details-right-sidebar.html" class="button-primary">
+								<a href="estate-details-right-sidebar.php" class="button-primary">
 									<span>read more</span>
 									<div class="button-triangle"></div>
 									<div class="button-triangle2"></div>
@@ -1740,7 +1740,7 @@ session_start();
 						<div class="grid-offer-back">
 							<div id="grid-map4" class="grid-offer-map"></div>
 							<div class="button">	
-								<a href="estate-details-right-sidebar.html" class="button-primary">
+								<a href="estate-details-right-sidebar.php" class="button-primary">
 									<span>read more</span>
 									<div class="button-triangle"></div>
 									<div class="button-triangle2"></div>
@@ -1789,7 +1789,7 @@ session_start();
 						<div class="grid-offer-back">
 							<div id="grid-map5" class="grid-offer-map"></div>
 							<div class="button">	
-								<a href="estate-details-right-sidebar.html" class="button-primary">
+								<a href="estate-details-right-sidebar.php" class="button-primary">
 									<span>read more</span>
 									<div class="button-triangle"></div>
 									<div class="button-triangle2"></div>
@@ -1838,7 +1838,7 @@ session_start();
 						<div class="grid-offer-back">
 							<div id="grid-map6" class="grid-offer-map"></div>
 							<div class="button">	
-								<a href="estate-details-right-sidebar.html" class="button-primary">
+								<a href="estate-details-right-sidebar.php" class="button-primary">
 									<span>read more</span>
 									<div class="button-triangle"></div>
 									<div class="button-triangle2"></div>

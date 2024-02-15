@@ -549,9 +549,9 @@ $transactionTypes = ['For sale', 'For rent'];
 									</ul>
 								</li>
 								<li class="dropdown-submenu">
-									<a tabindex="-1" href="estate-details-right-sidebar.html">Single Property</a>
+									<a tabindex="-1" href="estate-details-right-sidebar.php">Single Property</a>
 									<ul class="dropdown-menu">
-										<li><a href="estate-details-right-sidebar.html">Right Sidebar</a></li>
+										<li><a href="estate-details-right-sidebar.php">Right Sidebar</a></li>
 										<li><a href="estate-details-left-sidebar.html">Left Sidebar</a></li>
 										<li><a href="estate-details-no-sidebar.html">No Sidebar</a></li>
 									</ul>
