@@ -188,10 +188,10 @@ class Property
         $this->datedelete = $datedelete;
     }
 
-    public function addProperty($idDta, $idDpe, $idGaz, $idUser, $idCategory) : void
+    public function addProperty($idDta, $idDpe, $idGaz, $idUser, $idCategory) : bool
     {
 
-        $this->bdd->bdQuery("INSERT INTO properties (title,totroom,nroom,desc1,superficie,address_geo,address_street,address_city,address_zip,price,transaction,type,datecreate,gazDiag_id,DTA_id,DPE_id,users_id,category_id) VALUES (:title,:totroom,:nroom,:desc1,:superficie,:address_geo,:address_street,:address_city,:address_zip,:price,:transaction,:type,:datecreate,:idGaz,:idDta,:idDpe,:idUser,:idCategory)",
+        $this->bdd->bdQuery("INSERT INTO properties (title,totroom,nroom,desc1,superficie,address_geo,address_street,address_city,address_zip,price,transaction,type,datecreate,gazDiag_id,DTA_id,DPE_id,users_id,category_id,vendor_givename,vendor_familyname,vendor_email) VALUES (:title,:totroom,:nroom,:desc1,:superficie,:address_geo,:address_street,:address_city,:address_zip,:price,:transaction,:type,:datecreate,:idGaz,:idDta,:idDpe,:idUser,:idCategory,:vendor_givename,:vendor_familyname,:vendor_email)",
             [
                 'title' => $this->title,
                 'totroom' => $this->totroom,
@@ -210,11 +210,16 @@ class Property
                 'idDta' => $idDta,
                 'idDpe' => $idDpe,
                 'idUser' => $idUser,
-                'idCategory' => $idCategory
+                'idCategory' => $idCategory,
+                'vendor_givename' => $_SESSION['user']['firstname'],
+                'vendor_familyname' => $_SESSION['user']['lastname'],
+                'vendor_email' => $_SESSION['user']['email']
             ]);
+        //return true if passes
+        return true;
     }
 
-    public function updateProperty() : void
+    public function updateProperty(): bool
     {
         $this->bdd->bdQuery("UPDATE properties SET title = :title, totroom = :totroom, nroom = :nroom, desc1 = :desc1, superficie = :superficie, address_geo = :address_geo, address_street = :address_street, address_city = :address_city,address_zip = :address_zip , price = :price, transaction = :transaction, type = :type, dateupdate = :dateupdate WHERE id = :id",
             ['title' => $this->title,
@@ -232,6 +237,8 @@ class Property
                 'dateupdate' => $this->dateupdate,
                 'id' => $_SESSION['property-id']
             ]);
+        //return true if passes
+        return true;
     }
 
     public function getPropertyToUpdate() : array
@@ -258,11 +265,19 @@ $resultGaz = $bdd->bdQuery("SELECT id FROM gazDiag WHERE id = 2", []);
 $idGaz = $resultGaz->fetch();
 
 //select random user
-$resultUser = $bdd->bdQuery("SELECT id FROM users WHERE id BETWEEN 0 AND 100 ORDER BY RAND() LIMIT 1", []);
+$resultUser = $bdd->bdQuery("SELECT id FROM users WHERE id = :id", [
+    'id' => $_SESSION['user']['id']
+]);
 $idUser = $resultUser->fetch();
 
 $category = $bdd->bdQuery("SELECT id FROM category WHERE id = 2", []);
 $idCategory = $category->fetch();
+
+echo $idDta['id'];
+echo $idDpe['id'];
+echo $idGaz['id'];
+echo $idUser['id'];
+echo $idCategory['id'];
 
 
 if (isset($_POST['property-id'])) {
@@ -360,6 +375,17 @@ if (isset($_POST['update-property']) or isset($_POST['add-property'])){
         $property->updateProperty();
         header('Location: my-offers.php');
         $_SESSION['property-id'] = null;
+    }
+
+    if (isset($_POST['add-property'])) {
+        $property->setDatecreate(date('Y-m-d'));
+
+        if ($property->addProperty($idDta['id'], $idDpe['id'], $idGaz['id'], $idUser['id'], $idCategory['id'])) {
+            // La propriété a été ajoutée avec succès
+            header('Location: my-offers.php');
+        } else {
+            echo "La propriété n'a pas pu être ajoutée.<br>";
+        }
     }
 
 }
