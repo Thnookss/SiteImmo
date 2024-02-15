@@ -248,6 +248,23 @@ class Property
 $bdd = new BDD();
 $property = new Property($bdd);
 
+$resultDta = $bdd->bdQuery("SELECT id FROM DTA WHERE id = 2", []);
+$idDta = $resultDta->fetch();
+
+$resultDPE = $bdd->bdQuery("SELECT id FROM DPE WHERE id = 2", []);
+$idDpe = $resultDPE->fetch();
+
+$resultGaz = $bdd->bdQuery("SELECT id FROM gazDiag WHERE id = 2", []);
+$idGaz = $resultGaz->fetch();
+
+//select random user
+$resultUser = $bdd->bdQuery("SELECT id FROM users WHERE id BETWEEN 0 AND 100 ORDER BY RAND() LIMIT 1", []);
+$idUser = $resultUser->fetch();
+
+$category = $bdd->bdQuery("SELECT id FROM category WHERE id = 2", []);
+$idCategory = $category->fetch();
+
+
 if (isset($_POST['property-id'])) {
     $propertyToUpdate = $property->getPropertyToUpdate();
 
